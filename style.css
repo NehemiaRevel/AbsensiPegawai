@@ -25,36 +25,40 @@
     margin-right: 15vh;
 }
 
-#video-container {
-    width: 100%;
-    height: 100vh;
+.absenContainer{
+    background-color: rgb(252, 255, 48);
+    border-radius: 12px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #b5f9fc;
+    flex-direction: column;
+    margin: 5vh 10vh;
+    padding: 5vh 10vh;
+}
+
+.camContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 75vh;
 }
 
 video {
+    height: 50vh;
     width: auto;
-    align-items: start;
-    height: 70vh;
-    border: 2px solid #000;
+    background: #000;
     border-radius: 8px;
-    margin-top: -15vh;
 }
 
-#toggle-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
+.absenContainer > .camContainer > button {
+    padding: 1vh 0;
+    font-size: 1 rem;
+    border-radius: 8px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
-
-#toggle-btn:hover {
-  background-color: #0056b3;
+#toggleBtn.on {
+    background: red;
+    color: #fff;
+}
+#toggleBtn.off {
+    background: blue;
+    color: #fff;
 }
