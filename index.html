@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Absensi Pegawai</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,8 +22,21 @@
             <video id="video" autoplay playsinline></video><br>
             <button id="toggleBtn" class="off">Turn On</button>
         </div>
+        <div class="dataPegawai">
+            <h1 id="titlePegawai">Silahkan Scan QR Code</h1>
+            <h3 id="jabatanPegawai">Staff</h3>
+            <div class="dataPegawaiContainer">
+                <p id="idPegawai">ID = </p>
+                <p id="tanggalAbsen">Tanggal =</p>
+                <p id="waktuAbsen">Jam Hadir = </p>
+                <p id="statusPegawai">Status = </p>
+            </div>
+        </div>
     </div>
     
+<h2>QR Code Pegawai</h2>
+<p>Data: <b>12345|Budi Santoso</b></p>
+<div id="qrcode"></div>
 
     <script src="function.js"></script>
 </body>
