@@ -126,7 +126,6 @@ async function startCamera() {
 }
 
 let qrDataTimeout = null;
-let isQRCodeDetected = false; // Flag memastikan QR Code hanya diproses sekali
 
 function scanQRCode() {
     // Pastikan video sudah diputar dan ukuran valid
@@ -149,12 +148,8 @@ function scanQRCode() {
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     const code = jsQR(imageData.data, canvas.width, canvas.height);
 
-    // If a QR code is detected and it hasn't been processed before
-    if (code && !isQRCodeDetected) {
-        // Set the flag to prevent reprocessing the same QR Code
-        isQRCodeDetected = true;
-
-        // Display QR Code data and update status
+    // If a QR code is detected, display its data and update status
+    if (code) {
         qrResult.textContent = `QR Code Data: ${code.data}`;
         updateStatus('green', 'QR Code Detected!');
         console.log('QR Code Data:', code.data); // Output QR Code data to the console
@@ -168,21 +163,14 @@ function scanQRCode() {
         qrDataTimeout = setTimeout(() => {
             qrResult.textContent = "No QR Code detected.";
             updateStatus('red', 'No QR Code Detected');
-            isQRCodeDetected = false; // Reset the flag after 5 seconds
-        }, 3000); // 5 seconds
-    } else if (!code && isQRCodeDetected) {
-        // If no QR code is detected, reset the flag for the next detection
-        requestAnimationFrame(scanQRCode);
+        }, 5000); // 5 seconds
+    } else {
+        qrResult.textContent = "No QR Code detected.";
+        updateStatus('red', 'No QR Code Detected');
     }
 
     // Keep scanning by calling scanQRCode again in the next frame
     requestAnimationFrame(scanQRCode);
-}
-
-function updateStatus(color, message) {
-    status.classList.remove("green", "red");
-    status.classList.add(color);
-    status.textContent = message;
 }
 
 function stopCamera() {
