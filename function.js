@@ -152,21 +152,13 @@ function scanQRCode() {
     if (code) {
         qrResult.textContent = `QR Code Data: ${code.data}`;
         updateStatus('green', 'QR Code Detected!');
-        console.log('QR Code Data:', code.data); // Output QR Code data to the console
+        console.log('QR Code Data:', code.data); 
 
-        // Clear the timeout if there is an existing one
-        if (qrDataTimeout) {
-            clearTimeout(qrDataTimeout);
-        }
 
-        // Set a timeout to clear the data after 5 seconds
-        qrDataTimeout = setTimeout(() => {
-            qrResult.textContent = "No QR Code detected.";
-            updateStatus('red', 'No QR Code Detected');
-        }, 5000); // 5 seconds
     } else {
         qrResult.textContent = "No QR Code detected.";
         updateStatus('red', 'No QR Code Detected');
+        console.log('No QR Code detected');
     }
 
     // Keep scanning by calling scanQRCode again in the next frame
@@ -183,6 +175,13 @@ function stopCamera() {
     toggleBtn.textContent = "Turn on Camera";
     toggleBtn.classList.remove("on");
     toggleBtn.classList.add("off");
+}
+
+// Update the status notification with color and text
+function updateStatus(color, message) {
+    status.classList.remove("green", "red");
+    status.classList.add(color);
+    status.textContent = message;
 }
 
 toggleBtn.addEventListener("click", () => {
