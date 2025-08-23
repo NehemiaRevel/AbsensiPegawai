@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Absensi Pegawai</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,25 +19,51 @@
     </div>
 
     <div class="absenContainer">
-        <div class="camContainer">
-            <video id="video" autoplay playsinline></video><br>
-            <button id="toggleBtn" class="off">Turn On</button>
-        </div>
-        <div class="dataPegawai">
-            <h2 id="titlePegawai">--- Silahkan Scan QR Code ---</h2>
-            <h3 id="jabatanPegawai"></h3>
+
+        <h2>Scan Barcode ID Card</h2>
+        <div class="absenBox">
+
+            <div class="camContainer">
+                <video id="video" autoplay playsinline></video><br>
+                <button id="toggleBtn" class="off">SCAN SEKARANG</button>
+            </div>
+
             <div class="dataPegawaiContainer">
-                <p id="idPegawai"></p>
-                <p id="tanggalAbsen"></p>
-                <p id="waktuAbsen"></p>
-                <p id="statusPegawai"></p>
+                <h2 id="titlePegawai">IDENTITAS PEGAWAI</h2>
+
+                <div class="dataPegawaiBox">
+                    <p id="idPegawai">AIG123456789</p>
+                    <p id="namaPegawai">nama pegawai</p>
+                    <p id="tanggalAbsen">23/08/2025</p>
+                    <p id="waktuAbsen">17:40</p>
+                    <p id="statusPegawai">Hadir</p>
+                </div>
             </div>
         </div>
+
     </div>
+
+    <div id="result">
+        <h3>QR Code Data:</h3>
+        <p id="qr-result">No QR Code detected yet.</p>
+    </div>
+
+    <div id="status">Waiting for QR Code...</div>
     
-<h2>QR Code Pegawai</h2>
-<p>Data: <b>12345|Budi Santoso</b></p>
-<div id="qrcode"></div>
+    <div class="qrContainer">
+        <h1>Generate QR Code Pegawai</h1>
+        <div class="form-container">
+            <label for="employeeName">Nama Pegawai:</label>
+            <input type="text" id="employeeName" placeholder="Masukkan Nama">
+            <br><br>
+            <label for="employeeId">ID Pegawai:</label>
+            <input type="text" id="employeeId" placeholder="Masukkan ID Pegawai">
+            <br><br>
+            <button onclick="generateQRCode()">Generate QR Code</button>
+        </div>
+
+    <div id="qrcode"></div>
+    </div>
 
     <script src="function.js"></script>
 </body>
