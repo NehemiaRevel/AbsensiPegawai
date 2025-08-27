@@ -31,46 +31,6 @@ function updateDateTime(){
 updateDateTime();
 setInterval(updateDateTime, 1000);
 
-// --- Camera Function ---
-// const video = document.getElementById('video');
-// const toggleBtn = document.getElementById('toggleBtn');
-// let stream = null;  // Menyimpan stream kamera
-// let isCameraOn = false;
-
-// async function startCamera() {
-//     try {
-//         stream = await navigator.mediaDevices.getUserMedia({    video: true });
-//         video.srcObject = stream;
-//         isCameraOn = true;
-//         requestAnimationFrame(scanQRCode);
-//         toggleBtn.textContent = "Turn off Camera";
-//         toggleBtn.classList.remove("off");
-//         toggleBtn.classList.add("on");
-//     } catch (err) {
-//         alert("Tidak dapat mengakses kamera: " + err);
-//     }
-// }
-
-// function stopCamera() {
-//     if (stream) {
-//         const tracks = stream.getTracks();
-//         tracks.forEach(track => track.stop());
-//         video.srcObject = null;
-//     }
-//     isCameraOn = false;
-//     toggleBtn.textContent = "Turn on Camera";
-//     toggleBtn.classList.remove("on");
-//     toggleBtn.classList.add("off");
-// }
-
-// toggleBtn.addEventListener("click", () => {
-//     if (isCameraOn) {
-//         stopCamera();
-//     } else {
-//         startCamera();
-//     }
-// });
-
 // --- QR Code Scanner ---
 
 //generate QR Code
@@ -85,7 +45,7 @@ function generateQRCode() {
     }
 
     // Membuat string data untuk QR Code
-    var data = "Nama: " + name + "\nID: " + id;
+    var data = name + " | " + id;
 
     // Hapus QR Code lama sebelum membuat yang baru
     document.getElementById("qrcode").innerHTML = "";
@@ -103,6 +63,13 @@ const video = document.getElementById('video');
 const toggleBtn = document.getElementById('toggleBtn');
 const qrResult = document.getElementById('qr-result');
 const status = document.getElementById('status');
+
+const namaPegawai = document.getElementById('namaPegawai');
+const idPegawai = document.getElementById('idPegawai');
+const tanggalAbsen = document.getElementById('tanggalAbsen');
+const waktuAbsen = document.getElementById('waktuAbsen');
+const statusAbsen = document.getElementById('statusAbsen');
+
 let stream = null;  // Store the camera stream
 let isCameraOn = false;
 
@@ -125,7 +92,8 @@ async function startCamera() {
     }
 }
 
-let qrDataTimeout = null;
+let qrDetectionTimeout = null; // Menyimpan timeout untuk pengecekan delay
+let lastQRCodeTime = null; // Waktu terakhir QR Code terdeteksi
 
 function scanQRCode() {
     // Pastikan video sudah diputar dan ukuran valid
@@ -148,22 +116,66 @@ function scanQRCode() {
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     const code = jsQR(imageData.data, canvas.width, canvas.height);
 
-    // If a QR code is detected, display its data and update status
     if (code) {
         qrResult.textContent = `QR Code Data: ${code.data}`;
         updateStatus('green', 'QR Code Detected!');
         console.log('QR Code Data:', code.data); 
 
+        // Split the QR code data into name and ID
+        const [name, id] = code.data.split(" | ");
 
-    } else {
-        qrResult.textContent = "No QR Code detected.";
-        updateStatus('red', 'No QR Code Detected');
-        console.log('No QR Code detected');
+        // Update the employee information on the page
+        namaPegawai.textContent = name || "Unregistered";
+        idPegawai.textContent = id || "Unregistered";
+
+        const now = new Date();
+        const tanggal = now.toLocaleDateString   ('id-ID', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        });
+        const waktu = now.toLocaleTimeString('id-ID', {
+             hour: '2-digit', 
+             minute: '2-digit',
+        });
+
+        tanggalAbsen.textContent = tanggal;
+        waktuAbsen.textContent = waktu;
+        statusAbsen.textContent = "Hadir";
+    }
+    else {
+
+        const now = new Date();
+        const detik = now.getSeconds();
+
+        // Cek apakah sudah lebih dari 5 detik sejak terakhir QR code terdeteksi
+        if (lastQRCodeTime === null || (now - lastQRCodeTime) / 1000 > 8) {
+            lastQRCodeTime = now; 
+
+            // Reset informasi pegawai setelah 5 detik tidak ada QR code terdeteksi
+            qrResult.textContent = "No QR Code detected.";
+            namaPegawai.textContent = "nama pegawai";
+            idPegawai.textContent = "ID";
+            tanggalAbsen.textContent = "tanggal";
+            waktuAbsen.textContent = "Waktu";  
+            statusAbsen.textContent = "status";
+            updateStatus('red', 'No QR Code Detected');
+        }
+
+        console.log('No QR code detected');
     }
 
-    // Keep scanning by calling scanQRCode again in the next frame
-    requestAnimationFrame(scanQRCode);
+        // Keep scanning by calling scanQRCode again in the next frame
+        requestAnimationFrame(scanQRCode);
+    }
+
+function updateStatus(color, message) {
+    status.classList.remove("green", "red");
+    status.classList.add(color);
+    status.textContent = message;
 }
+
+
 
 function stopCamera() {
     if (stream) {
@@ -175,13 +187,6 @@ function stopCamera() {
     toggleBtn.textContent = "Turn on Camera";
     toggleBtn.classList.remove("on");
     toggleBtn.classList.add("off");
-}
-
-// Update the status notification with color and text
-function updateStatus(color, message) {
-    status.classList.remove("green", "red");
-    status.classList.add(color);
-    status.textContent = message;
 }
 
 toggleBtn.addEventListener("click", () => {
