@@ -78,7 +78,7 @@ async function startCamera() {
         stream = await navigator.mediaDevices.getUserMedia({ video: true });
         video.srcObject = stream;
         isCameraOn = true;
-        toggleBtn.textContent = "Turn off Camera";
+        toggleBtn.textContent = "Turn Off Camera";
         toggleBtn.classList.remove("off");
         toggleBtn.classList.add("on");
 
@@ -118,7 +118,7 @@ function scanQRCode() {
 
     if (code) {
         qrResult.textContent = `QR Code Data: ${code.data}`;
-        updateStatus('green', 'QR Code Detected!');
+        updateStatus('green', 'QR Code Detected');
         console.log('QR Code Data:', code.data); 
 
         // Split the QR code data into name and ID
@@ -184,7 +184,7 @@ function stopCamera() {
         video.srcObject = null;
     }
     isCameraOn = false;
-    toggleBtn.textContent = "Turn on Camera";
+    toggleBtn.textContent = "Turn On Camera";
     toggleBtn.classList.remove("on");
     toggleBtn.classList.add("off");
 }
