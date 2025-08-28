@@ -6,7 +6,7 @@
     border-radius: 3vh;
     margin: 5vh 8vh;
     padding: 5vh 8vh;
-    height: 70vh;
+    height: fit-content;
     max-height: 70vh;
 }
 
