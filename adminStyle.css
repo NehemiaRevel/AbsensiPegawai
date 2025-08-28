@@ -52,3 +52,14 @@
 .descPegawai{
     margin-left: 2vh;
 }
+
+.tambahPegawaiBtn{
+    background-color: #F4660E;
+    width: fit-content;
+    padding: 2vh 4vh;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 2vh;
+    margin-top: 4vh;
+    justify-self: end;
+}
