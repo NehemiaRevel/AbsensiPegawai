@@ -1,0 +1,54 @@
+.daftarContainer {
+    background-color:#02243c;
+    color: white;
+    font-size: 1rem;
+    font-weight: 200;
+    border-radius: 3vh;
+    margin: 5vh 8vh;
+    padding: 5vh 8vh;
+    height: 70vh;
+    max-height: 70vh;
+}
+
+.daftarBox{
+    margin-top: 2vh;
+    padding: 2vh 0;
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    background-color: #f4faff;
+    color: #02243c;
+    border-radius: 2vh;
+    font-size: 1rem;
+    font-weight: bold;
+    overflow-y: auto;
+    align-items:start;
+    text-align: left;
+    justify-content: space-between;
+}
+
+.daftarLeft {
+    display: flex;
+}
+
+.daftarRight {
+    margin-right: 5vh;
+    align-self: center;
+}
+
+.daftarRight a{
+    color: #000000;
+}
+
+.icon{
+    background-color: blueviolet;
+    width: 5vh;
+    height: 5vh;
+    margin-left: 3vh;
+    border-radius: 5vh;
+    align-self: center;
+}
+
+.descPegawai{
+    margin-left: 2vh;
+}
