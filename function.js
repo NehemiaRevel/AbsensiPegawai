@@ -140,8 +140,8 @@ function scanQRCode() {
         });
 
         tanggalAbsen.textContent = tanggal;
-        waktuAbsen.textContent = waktu;
-        statusAbsen.textContent = "Hadir";
+        waktuAbsen.textContent = `${waktu} WIB`;
+        statusAbsen.textContent = "HADIR";
     }
     else {
 
