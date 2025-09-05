@@ -63,6 +63,6 @@
     <div id="qrcode"></div>
     </div>
 
-    <script src="function.js"></script>
+    <script src="app/function.js"></script>
 </body>
 </html>
