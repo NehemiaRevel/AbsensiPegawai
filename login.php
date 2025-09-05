@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Login Admin</title>
-    <link rel="stylesheet" href="Assets/loginStyle.css">
+    <link rel="stylesheet" href="Assets/css/loginStyle.css">
 </head>
 <body>
     

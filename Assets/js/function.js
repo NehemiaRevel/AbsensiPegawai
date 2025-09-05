@@ -1,3 +1,5 @@
+console.log("Function.js loaded");
+
 // --- Date Display ---
 function getTimeParts() {
     const now = new Date();
@@ -117,7 +119,6 @@ function scanQRCode() {
     const code = jsQR(imageData.data, canvas.width, canvas.height);
 
     if (code) {
-        qrResult.textContent = `QR Code Data: ${code.data}`;
         updateStatus('green', 'QR Code Detected');
         console.log('QR Code Data:', code.data); 
 
@@ -153,7 +154,6 @@ function scanQRCode() {
             lastQRCodeTime = now; 
 
             // Reset informasi pegawai setelah 5 detik tidak ada QR code terdeteksi
-            qrResult.textContent = "No QR Code detected.";
             namaPegawai.textContent = "nama pegawai";
             idPegawai.textContent = "ID";
             tanggalAbsen.textContent = "tanggal";
@@ -174,8 +174,6 @@ function updateStatus(color, message) {
     status.classList.add(color);
     status.textContent = message;
 }
-
-
 
 function stopCamera() {
     if (stream) {
