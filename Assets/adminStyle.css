@@ -10,6 +10,13 @@
     max-height: 70vh;
 }
 
+.logoutBtn img{
+    width: 15vh;
+    height: auto;
+    margin-right: 7vh;
+    margin-top: 0.5vh;
+}
+
 .daftarBox{
     margin-top: 2vh;
     padding: 2vh 0;
@@ -22,9 +29,9 @@
     font-size: 1rem;
     font-weight: bold;
     overflow-y: auto;
-    /* align-items:start;
+    align-items:start;
     text-align: left;
-    justify-content: space-between; */
+    justify-content: space-between;
 }
 
 .daftarLeft {

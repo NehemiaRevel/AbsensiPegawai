@@ -6,7 +6,7 @@
     <title>Absensi Pegawai</title>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Assets/style.css">
 </head>
 <body>
 
@@ -14,7 +14,9 @@
         <div class="navTitle">
             <div>Sistem Absensi Pegawai</div>
         </div>
-        <div class="toDate" id="todayDate">
+        <div class="rightNav">
+            <div class="toDate" id="todayDate"></div>
+            <a href="login.php" class="loginBtn"><img src="Assets/admin-profile.png" alt="admin"></a>
         </div>
     </div>
 
@@ -41,18 +43,9 @@
                     </div>
                 </div>
                 <div id="status">Waiting for QR Code...</div>
-            </div>   
+            </div>
         </div>
 
-    </div>
-
-    <div id="result">
-        <h3>QR Code Data:</h3>
-        <p id="qr-result">No QR Code detected yet.</p>
-    </div>
-
-    <div class="adminBtn">
-        <button onclick="location.href='admin-view.html'">Admin View</button>
     </div>
     
     <div class="qrContainer">

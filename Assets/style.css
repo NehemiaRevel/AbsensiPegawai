@@ -29,7 +29,20 @@ body {
 }
 
 .toDate{
-    margin-right: 15vh;
+    margin-right: 0.1vh;
+}
+
+.rightNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.loginBtn img{
+    width: 15vh;
+    height: auto;
+    margin-right: 6vh;
+    margin-top: 0.5vh;
 }
 
 .absenContainer{
@@ -82,7 +95,7 @@ video {
 
 .dataPegawaiContainer {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     background-color: rgb(255, 255, 255);
     color: #000000;
     border-radius: 12px;
