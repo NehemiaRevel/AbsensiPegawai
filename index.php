@@ -14,7 +14,7 @@
         </div>
         <div class="rightNav">
             <div class="toDate" id="todayDate"></div>
-            <a href="login.php" class="loginBtn"><img src="Assets/admin-profile.png" alt="admin"></a>
+            <a href="view-login.php" class="loginBtn"><img src="Assets/icon/admin-profile.png" alt="admin"></a>
         </div>
     </div>
 

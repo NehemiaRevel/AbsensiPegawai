@@ -32,6 +32,19 @@ body {
     margin-right: 0.1vh;
 }
 
+.backBtn img{
+    width: 5vh;
+    height: auto;
+    margin-right: 6vh;
+    margin-top: 0.5vh;
+    margin-left: 5vh;
+}
+
+.leftNav {
+    display: flex;
+    align-items: center;
+}
+
 .rightNav {
     display: flex;
     align-items: center;
@@ -177,4 +190,101 @@ video {
 
 #status.green {
     background-color: green; 
+}
+
+/* ==== ALERT ==== */
+.alert {
+  max-width: 600px;
+  margin: 15px auto;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+.alert-success {
+  background: #ddffdd;
+  color: #060;
+  border: 1px solid #060;
+}
+.alert-danger {
+  background: #ffdddd;
+  color: #a00;
+  border: 1px solid #a00;
+}
+
+/* ==== MODAL ==== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; 
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background: #f9f9f9;
+  margin: 8% auto;
+  padding: 5vh;
+  border-radius: 2vh;
+  max-width: 55vh;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.modal-content label {
+  font-weight: bold;
+}
+.modal-content input
+{
+  width: 51vh;
+  padding: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 4vh;
+  border: 1px solid #bbb;
+  border-radius: 2vh;
+}
+
+.modal-content select {
+  width: 55vh;
+  padding: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 4vh;
+  border: 1px solid #bbb;
+  border-radius: 2vh;
+}
+
+.modal-content button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  background: green;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+.closeBtn {
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #665;
+}
+.closeBtn:hover { color: #000; }
+
+.displayPegawai{
+    width: 15vh; 
+    height: 15vh; 
+    object-fit: cover; 
+    border-radius: 50%;
 }

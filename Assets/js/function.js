@@ -33,7 +33,14 @@ function updateDateTime(){
 updateDateTime();
 setInterval(updateDateTime, 1000);
 
-// --- QR Code Scanner ---
+// Alert function
+  setTimeout(() => {
+    document.querySelectorAll(".alert").forEach(el => {
+      el.style.transition = "opacity 0.5s ease";
+      el.style.opacity = "0";
+      setTimeout(() => el.remove(), 500); // hapus dari DOM
+    });
+  }, 3000); // hilang setelah 3 detik
 
 //generate QR Code
 function generateQRCode() {
@@ -58,6 +65,35 @@ function generateQRCode() {
         width: 200,
         height: 200
     });
+}
+
+function generateQRpegawai(data, elementId, pegawaiId) {
+    let qrContainer = document.getElementById(elementId);
+    qrContainer.innerHTML = ""; // kosongkan dulu
+
+    let qrcode = new QRCode(qrContainer, {
+        text: data,
+        width: 128,
+        height: 128,
+    });
+
+    // Ambil canvas/gambar QR
+    setTimeout(() => {
+        let img = qrContainer.querySelector("img") || qrContainer.querySelector("canvas");
+        if (img) {
+            let qrBase64 = img.src || img.toDataURL("image/png");
+
+            // Kirim QR ke server
+            fetch("simpan-qr.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "id=" + encodeURIComponent(pegawaiId) + "&qr=" + encodeURIComponent(qrBase64)
+            })
+            .then(res => res.text())
+            .then(res => console.log("Server:", res))
+            .catch(err => console.error(err));
+        }
+    }, 500); // kasih jeda biar QR selesai digambar
 }
 
 // QR Code Scanner

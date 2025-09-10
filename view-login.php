@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($email === "adminaramaru@gmail.com" && $password === "dev12345") {
         $_SESSION['admin'] = $email;
         $_SESSION['last_activity'] = time(); // catat waktu login
-        header("Location: admin-view.php");
+        header("Location: view-admin.php");
         exit;
     } else {
         $error = "Email atau password salah!";
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="rightNav">
             <div class="toDate" id="todayDate"></div>
-            <a href="index.php" class="loginBtn"><img src="Assets/logout-img.png" alt="admin"></a>
+            <a href="index.php" class="loginBtn"><img src="Assets/icon/logout-img.png" alt="admin"></a>
         </div>
     </div>
 
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="w1">Hi, <br></p>
                 <p class="w2">Selamat Datang!</p>
             </div>
-            <img src="Assets/bg-login.png" alt="">
+            <img src="Assets/icon/bg-login.png" alt="">
         </div>
 
         <div class="formContainer">

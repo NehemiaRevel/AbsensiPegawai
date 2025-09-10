@@ -10,11 +10,86 @@
     max-height: 70vh;
 }
 
+.daftarContainerLengkap {
+    background-color:#02243c;
+    color: white;
+    font-size: 1rem;
+    font-weight: 200;
+    border-radius: 3vh;
+    margin: 5vh 8vh;
+    padding: 5vh 8vh;
+    height: fit-content;
+}
+
+.daftarPegawaiBtn{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    margin-top: 4vh;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pagination {
+  text-align: center;
+}
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 3px;
+  border-radius: 5px;
+  background: #083a5e;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.pagination a.active {
+  background: #F4660E;
+  pointer-events: none;
+}
+.pagination span {
+  background: transparent;
+  color: #555;
+  font-weight: normal;
+}
+.pagination a:hover:not(.active) {
+  background: #0056b3;
+}
+
+.tambahPegawaiBtn{
+    background-color: #F4660E;
+    width: fit-content;
+    height: fit-content;
+    padding: 2vh 4vh;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 2vh;
+    justify-self: end;
+    align-content: center;
+    text-decoration: none;
+    color: #f4faff;
+}
+
 .logoutBtn img{
     width: 15vh;
     height: auto;
     margin-right: 7vh;
     margin-top: 0.5vh;
+}
+
+.titleDaftarPegawai{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1vh;
+    align-self: center;
+}
+
+.titleDaftarPegawai a{
+    color: #f4faff;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .daftarBox{
@@ -56,17 +131,47 @@
     align-self: center;
 }
 
-.descPegawai{
-    margin-left: 2vh;
+.detailBtn{
+    padding: 1vh 2vh;
+    background: blue;
+    color: white;
+    border: none;
+    border-radius: 1vh;
+    cursor: pointer;
 }
 
-.tambahPegawaiBtn{
-    background-color: #F4660E;
-    width: fit-content;
-    padding: 2vh 4vh;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 2vh;
-    margin-top: 4vh;
-    justify-self: end;
+.displayPegawai{
+    width: 10vh; 
+    height: 10vh; 
+    object-fit: cover; 
+    border-radius: 50%;
 }
+
+.foto{
+    width: 10vh; 
+    height: 10vh; 
+    object-fit: cover; 
+    border-radius: 50%;
+}
+
+.profilPegawai{
+    align-self: center;
+    margin-left: 3vh;  
+}
+
+.descPegawai{
+    margin-left: 2vh;
+    padding-bottom: 1vh;
+    align-self: center;
+}
+
+.namaPegawai{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.idPegawai{
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
