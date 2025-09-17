@@ -46,21 +46,6 @@
 
     </div>
     
-    <div class="qrContainer">
-        <h1>Generate QR Code Pegawai</h1>
-        <div class="form-container">
-            <label for="employeeName">Nama Pegawai:</label>
-            <input type="text" id="employeeName" placeholder="Masukkan Nama">
-            <br><br>
-            <label for="employeeId">ID Pegawai:</label>
-            <input type="text" id="employeeId" placeholder="Masukkan ID Pegawai">
-            <br><br>
-            <button onclick="generateQRCode()">Generate QR Code</button>
-        </div>
-
-    <div id="qrcode"></div>
-    </div>
-    
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
     <script src="Assets/js/function.js"></script>

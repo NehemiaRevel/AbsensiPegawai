@@ -134,46 +134,43 @@ let qrDetectionTimeout = null; // Menyimpan timeout untuk pengecekan delay
 let lastQRCodeTime = null; // Waktu terakhir QR Code terdeteksi
 
 function scanQRCode() {
-    // Pastikan video sudah diputar dan ukuran valid
     if (video.videoWidth === 0 || video.videoHeight === 0) {
-        requestAnimationFrame(scanQRCode);  // Tunggu hingga ukuran video valid
+        requestAnimationFrame(scanQRCode);
         return;
     }
 
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
 
-    // Set the canvas size to match the video dimensions
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
-    // Draw the current frame from the video onto the canvas
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    // Get the image data from the canvas
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     const code = jsQR(imageData.data, canvas.width, canvas.height);
 
     if (code) {
         updateStatus('green', 'QR Code Detected');
-        console.log('QR Code Data:', code.data); 
+        console.log('QR Code Data:', code.data);
 
-        // Split the QR code data into name and ID
+        // panggil function baru untuk proses absensi
+        pindaiQRCode(code.data);
+
+        // tampilkan data di UI
         const [name, id] = code.data.split(" | ");
-
-        // Update the employee information on the page
         namaPegawai.textContent = name || "Unregistered";
         idPegawai.textContent = id || "Unregistered";
 
         const now = new Date();
-        const tanggal = now.toLocaleDateString   ('id-ID', {
+        const tanggal = now.toLocaleDateString('id-ID', {
             day: '2-digit',
             month: 'long',
             year: 'numeric'
         });
         const waktu = now.toLocaleTimeString('id-ID', {
-             hour: '2-digit', 
-             minute: '2-digit',
+            hour: '2-digit', 
+            minute: '2-digit',
         });
 
         tanggalAbsen.textContent = tanggal;
@@ -181,15 +178,11 @@ function scanQRCode() {
         statusAbsen.textContent = "HADIR";
     }
     else {
-
         const now = new Date();
-        const detik = now.getSeconds();
 
-        // Cek apakah sudah lebih dari 5 detik sejak terakhir QR code terdeteksi
         if (lastQRCodeTime === null || (now - lastQRCodeTime) / 1000 > 8) {
             lastQRCodeTime = now; 
 
-            // Reset informasi pegawai setelah 5 detik tidak ada QR code terdeteksi
             namaPegawai.textContent = "nama pegawai";
             idPegawai.textContent = "ID";
             tanggalAbsen.textContent = "tanggal";
@@ -197,18 +190,57 @@ function scanQRCode() {
             statusAbsen.textContent = "status";
             updateStatus('red', 'No QR Code Detected');
         }
-
         console.log('No QR code detected');
     }
 
-        // Keep scanning by calling scanQRCode again in the next frame
-        requestAnimationFrame(scanQRCode);
-    }
+    requestAnimationFrame(scanQRCode);
+}
 
 function updateStatus(color, message) {
     status.classList.remove("green", "red");
     status.classList.add(color);
     status.textContent = message;
+}
+
+function pindaiQRCode(data) {
+  console.log("Data baru:", data);
+
+  // Format QR = "Nama | ID"
+  const parts = data.split("|");
+  if (parts.length < 2) {
+    alert("QR tidak valid");
+    return;
+  }
+
+  const idPegawai = parts[1].trim();
+
+  fetch("proses-absensi.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: "id=" + encodeURIComponent(idPegawai)
+  })
+  .then(res => res.json())
+  .then(response => {
+    const statusEl = document.getElementById("status");
+    statusEl.textContent = response.message;
+
+    if (response.status === "success") {
+      statusEl.style.backgroundColor = "green";
+    } else if (response.status === "warning") {
+      statusEl.style.backgroundColor = "orange";
+    } else {
+      statusEl.style.backgroundColor = "red";
+    }
+
+    // auto clear status setelah 3 detik
+    setTimeout(() => {
+      statusEl.textContent = "";
+      statusEl.style.backgroundColor = "";
+    }, 3000);
+  })
+  .catch(err => {
+    console.error("Error:", err);
+  });
 }
 
 function stopCamera() {

@@ -25,7 +25,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     color: rgb(0, 0, 0);
-    margin-left: 15vh;
+    margin-left: 10vh;
 }
 
 .toDate{
@@ -287,4 +287,163 @@ video {
     height: 15vh; 
     object-fit: cover; 
     border-radius: 50%;
+}
+
+/* Toolbar wrapper */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f4faff;
+  padding: 2vh 4vh;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 187vh;
+}
+
+/* Filter form */
+.filter-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-form label {
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-form input[type="date"] {
+  padding: 6px 10px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.btnFilter {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #28a745;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnFilter:hover {
+  background: #218838;
+}
+
+/* Dropdown Export */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #007BFF;
+  color: white;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  z-index: 100;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #0056b3;
+}
+
+.btnReset {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #dc3545;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btnReset:hover {
+  background: #c82333;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+th {
+  background: #02243c;
+  color: #fff;
+}
+.filter-box {
+  width: 95%;
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter-box form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-form select {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  margin: 0 10px;
+}
+
+.containerDataAbsensi{
+    max-width: 100%;
+    width: 200vh;
+    margin: 3vh 5vh;
+}
+
+.containerDataAbsensi h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2vh;
+    color: #02243c;
+    margin-left: 3vh;
 }
