@@ -19,10 +19,19 @@
     </div>
 
     <div class="absenContainer">
-
         <h2>Scan Barcode ID Card</h2>
-        <div class="absenBox">
 
+        <!-- 🔹 Tambahan pilihan mode -->
+        <div class="modeContainer">
+            <label>
+                <input type="radio" name="mode" value="checkin" checked> Check-in
+            </label>
+            <label>
+                <input type="radio" name="mode" value="checkout"> Check-out
+            </label>
+        </div>
+
+        <div class="absenBox">
             <div class="camContainer">
                 <video id="video" autoplay playsinline></video><br>
                 <button id="toggleBtn" class="off">SCAN SEKARANG</button>
@@ -43,7 +52,6 @@
                 <div id="status">Waiting for QR Code...</div>
             </div>
         </div>
-
     </div>
     
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>

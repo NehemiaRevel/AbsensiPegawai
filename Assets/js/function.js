@@ -203,9 +203,8 @@ function updateStatus(color, message) {
 }
 
 function pindaiQRCode(data) {
-  console.log("Data baru:", data);
+  console.log("QR Data:", data);
 
-  // Format QR = "Nama | ID"
   const parts = data.split("|");
   if (parts.length < 2) {
     alert("QR tidak valid");
@@ -214,10 +213,13 @@ function pindaiQRCode(data) {
 
   const idPegawai = parts[1].trim();
 
+  // 🔹 Ambil mode check-in / check-out
+  const mode = document.querySelector('input[name="mode"]:checked').value;
+
   fetch("proses-absensi.php", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: "id=" + encodeURIComponent(idPegawai)
+    body: "id=" + encodeURIComponent(idPegawai) + "&mode=" + encodeURIComponent(mode)
   })
   .then(res => res.json())
   .then(response => {
@@ -232,16 +234,14 @@ function pindaiQRCode(data) {
       statusEl.style.backgroundColor = "red";
     }
 
-    // auto clear status setelah 3 detik
     setTimeout(() => {
-      statusEl.textContent = "";
+      statusEl.textContent = "Waiting for QR Code...";
       statusEl.style.backgroundColor = "";
     }, 3000);
   })
-  .catch(err => {
-    console.error("Error:", err);
-  });
+  .catch(err => console.error("Error:", err));
 }
+
 
 function stopCamera() {
     if (stream) {

@@ -264,7 +264,7 @@ video {
 }
 
 .modal-content button {
-  padding: 8px 15px;
+  padding: 2vh 5vh;
   border: none;
   border-radius: 6px;
   background: green;
@@ -275,7 +275,7 @@ video {
 }
 .closeBtn {
   float: right;
-  font-size: 22px;
+  font-size: 4vh;
   font-weight: bold;
   cursor: pointer;
   color: #665;
@@ -296,7 +296,7 @@ video {
   align-items: center;
   background: #f4faff;
   padding: 2vh 4vh;
-  margin: 20px auto;
+  margin: 4vh auto;
   border: 1px solid #ccc;
   border-radius: 8px;
   max-width: 187vh;
@@ -306,7 +306,7 @@ video {
 .filter-form {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 2vh;
 }
 
 .filter-form label {
@@ -315,14 +315,14 @@ video {
 }
 
 .filter-form input[type="date"] {
-  padding: 6px 10px;
+  padding: 1vh 2vh;
   border: 1px solid #bbb;
   border-radius: 6px;
   font-size: 14px;
 }
 
 .btnFilter {
-  padding: 6px 12px;
+  padding: 1.5vh 3vh;
   border: none;
   border-radius: 6px;
   background: #28a745;
@@ -344,7 +344,7 @@ video {
 .dropbtn {
   background-color: #007BFF;
   color: white;
-  padding: 8px 14px;
+  padding: 2vh 3vh;
   font-size: 14px;
   font-weight: bold;
   border: none;
@@ -365,10 +365,10 @@ video {
 
 .dropdown-content a {
   color: #333;
-  padding: 10px 15px;
+  padding: 1.2vh 3vh;
   text-decoration: none;
   display: block;
-  font-size: 14px;
+  font-size: 11pt;
 }
 
 .dropdown-content a:hover {
@@ -384,7 +384,7 @@ video {
 }
 
 .btnReset {
-  padding: 6px 12px;
+  padding: 1vh 2vh;
   border: none;
   border-radius: 6px;
   background: #dc3545;
@@ -398,15 +398,15 @@ video {
 }
 
 table {
-    width: 90%;
-    margin: 20px auto;
+    width: 93%;
+    margin: 4vh auto;
     border-collapse: collapse;
     background: #fff;
     border-radius: 8px;
     overflow: hidden;
 }
 th, td {
-  padding: 10px;
+  padding: 1.5vh;
   border: 1px solid #ddd;
   text-align: center;
 }
@@ -423,12 +423,12 @@ th {
 }
 .filter-box form {
   display: flex;
-  gap: 10px;
+  gap: 2vh;
   align-items: center;
 }
 
 .filter-form select {
-  padding: 6px;
+  padding: 1.5vh;
   border-radius: 6px;
   border: 1px solid #bbb;
   margin: 0 10px;
@@ -446,4 +446,22 @@ th {
     margin-bottom: 2vh;
     color: #02243c;
     margin-left: 3vh;
+}
+
+.modeContainer {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  padding: 1.8vh;
+  background: #F4660E;
+  border-radius: 1.5vh;
+  display: flex;
+  justify-content: center;
+  gap: 5vh;
+  border: #f4faff;
+  border-style:outset;
+}
+.modeContainer label {
+  font-weight: bold;
+  cursor: pointer;
+  color: #f4faff;
 }

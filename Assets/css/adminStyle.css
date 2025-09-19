@@ -74,6 +74,12 @@
   font-weight: bold;
 }
 
+.btn{
+    display: flex;
+    align-items: center;
+    gap: 5vh;
+}
+
 .tambahPegawaiBtn{
     background-color: #F4660E;
     width: fit-content;
@@ -87,6 +93,20 @@
     text-decoration: none;
     color: #f4faff;
 }
+
+.lihatAbsensiBtn{
+    background-color: #055d9c;
+    width: fit-content;
+    height: fit-content;
+    padding: 2vh 4vh;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 2vh;
+    justify-self: end;
+    align-content: center;
+    text-decoration: none;
+    color: #f4faff;
+}   
 
 .logoutBtn img{
     width: 15vh;
